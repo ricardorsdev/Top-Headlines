@@ -1,4 +1,4 @@
-package com.example.topheadlines.view
+package com.example.topheadlines.ui.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

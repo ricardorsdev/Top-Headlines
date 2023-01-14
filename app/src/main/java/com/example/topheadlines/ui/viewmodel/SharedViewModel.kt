@@ -1,0 +1,40 @@
+package com.example.topheadlines.ui.viewmodel
+
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.example.topheadlines.data.model.Article
+import com.example.topheadlines.repository.NewsRepository
+import com.example.topheadlines.utils.NetworkResult
+import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.launch
+import javax.inject.Inject
+
+@HiltViewModel
+class SharedViewModel @Inject constructor(
+    private val newsRepository: NewsRepository
+) : ViewModel() {
+
+    private var _articleList = MutableStateFlow<NetworkResult<List<Article>>>(NetworkResult.Loading())
+    val articleList: StateFlow<NetworkResult<List<Article>>> = _articleList
+
+    init {
+        fetchHeadlines()
+    }
+
+    private fun fetchHeadlines() {
+        viewModelScope.launch {
+            _articleList.value = NetworkResult.Loading()
+
+            newsRepository.getHeadlines()
+                .catch {
+                    _articleList.value = NetworkResult.Failure(it.message)
+                }
+                .collect { articles ->
+                _articleList.value = NetworkResult.Success(articles)
+                }
+        }
+    }
+}
