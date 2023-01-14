@@ -17,7 +17,8 @@ class NewsViewModel @Inject constructor(
     private val newsRepository: NewsRepository
 ) : ViewModel() {
 
-    private var _articleList = MutableStateFlow<NetworkResult<List<Article>>>(NetworkResult.Loading())
+    private var _articleList =
+        MutableStateFlow<NetworkResult<List<Article>>>(NetworkResult.Loading())
     val articleList: StateFlow<NetworkResult<List<Article>>> = _articleList
 
     init {
@@ -33,7 +34,7 @@ class NewsViewModel @Inject constructor(
                     _articleList.value = NetworkResult.Failure(it.message)
                 }
                 .collect { articles ->
-                _articleList.value = NetworkResult.Success(articles)
+                    _articleList.value = NetworkResult.Success(articles)
                 }
         }
     }
