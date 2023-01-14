@@ -10,8 +10,11 @@ import javax.inject.Inject
 class NewsRepositoryImpl @Inject constructor(private val dataSource: NewsService): NewsRepository {
 
     override fun getHeadlines(): Flow<List<Article>> {
+        //TODO adding getHeadlines hardcoded and including delay;
+        // These should be removed later.
+
         return flow {
-            emit(dataSource.getHeadlines("", ""))
+            emit(dataSource.getHeadlines("bbc-news", "8972067dab374dbf86896893e0c2729a"))
         }.map {
             it.articles
         }
