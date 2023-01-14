@@ -9,11 +9,13 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import com.example.topheadlines.data.model.Article
 import com.example.topheadlines.databinding.FragmentHeadlinesBinding
 import com.example.topheadlines.ui.viewmodel.NewsViewModel
 import com.example.topheadlines.utils.NetworkResult
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class HeadlinesFragment : Fragment() {
@@ -21,6 +23,8 @@ class HeadlinesFragment : Fragment() {
     private var _binding: FragmentHeadlinesBinding? = null
     private val binding get() = _binding!!
     private val sharedViewModel: NewsViewModel by activityViewModels()
+    @Inject
+    lateinit var headlinesAdapter: HeadlinesAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -34,6 +38,9 @@ class HeadlinesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.rvHeadlines.adapter = headlinesAdapter
+
+
         setObserver()
     }
 
@@ -43,13 +50,15 @@ class HeadlinesFragment : Fragment() {
                 sharedViewModel.articleList.collect { result ->
                     when (result) {
                         is NetworkResult.Loading -> {
-                            showLoading(true)
+                            showLoading()
                         }
                         is NetworkResult.Success -> {
-                            showLoading(false)
+                            result.data?.let {
+                                showList(it)
+                            }
                         }
                         is NetworkResult.Failure -> {
-                            showLoading(false)
+
                         }
                     }
                 }
@@ -57,8 +66,17 @@ class HeadlinesFragment : Fragment() {
         }
     }
 
-    private fun showLoading(shouldShow: Boolean) {
-        binding.progressIndicator.visibility = if (shouldShow) View.VISIBLE else View.GONE
+    private fun showLoading() {
+        binding.progressIndicator.visibility = View.VISIBLE
+        binding.rvHeadlines.visibility = View.GONE
+    }
+
+    private fun showList(articlesList: List<Article>) {
+        binding.progressIndicator.visibility = View.GONE
+        binding.rvHeadlines.visibility = View.VISIBLE
+
+        headlinesAdapter.updateList(articlesList)
+        headlinesAdapter.notifyItemRangeChanged(0, articlesList.lastIndex)
     }
 
     override fun onDestroyView() {

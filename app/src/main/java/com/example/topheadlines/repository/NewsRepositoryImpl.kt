@@ -2,6 +2,7 @@ package com.example.topheadlines.repository
 
 import com.example.topheadlines.data.model.Article
 import com.example.topheadlines.data.remote.NewsService
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map
@@ -14,6 +15,7 @@ class NewsRepositoryImpl @Inject constructor(private val dataSource: NewsService
         // These should be removed later.
 
         return flow {
+            delay(3000)
             emit(dataSource.getHeadlines("bbc-news", "8972067dab374dbf86896893e0c2729a"))
         }.map {
             it.articles
