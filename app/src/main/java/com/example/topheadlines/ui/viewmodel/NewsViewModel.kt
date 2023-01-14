@@ -31,6 +31,7 @@ class NewsViewModel @Inject constructor(
 
             newsRepository.getHeadlines()
                 .catch {
+                    it.printStackTrace()
                     _articleList.value = NetworkResult.Failure(it.message)
                 }
                 .collect { articles ->

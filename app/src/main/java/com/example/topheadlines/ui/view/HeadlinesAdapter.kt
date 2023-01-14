@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.topheadlines.R
 import com.example.topheadlines.data.model.Article
 import com.example.topheadlines.databinding.HeadlineItemViewBinding
@@ -20,9 +21,10 @@ class HeadlinesAdapter @Inject constructor() :
         fun bind(article: Article) {
             Glide
                 .with(binding.root.context)
-                .load(article.urlToImage)
+                .load(article.imageUrl)
                 .centerCrop()
                 .placeholder(R.drawable.headline_placeholder)
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(binding.headlineImage)
 
             binding.headlineTitle.text = article.title
