@@ -1,5 +1,6 @@
 package com.example.topheadlines.di
 
+import com.example.topheadlines.data.remote.NewsService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -43,4 +44,9 @@ object NetworkModule {
             .build()
     }
 
+    @Singleton
+    @Provides
+    fun bindNewsService(retrofit: Retrofit): NewsService {
+        return retrofit.create(NewsService::class.java)
+    }
 }
