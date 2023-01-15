@@ -17,6 +17,10 @@
     <fragment
         android:id="@+id/articleFragment"
         android:name="com.example.topheadlines.ui.view.ArticleFragment"
-        tools:layout="@layout/fragment_article"/>
+        tools:layout="@layout/fragment_article">
+        <argument
+            android:name="article"
+            app:argType="com.example.topheadlines.data.model.Article"/>
+    </fragment>
 
 </navigation>

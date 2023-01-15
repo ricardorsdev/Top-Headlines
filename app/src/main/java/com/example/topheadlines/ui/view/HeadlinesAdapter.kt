@@ -14,20 +14,27 @@ class HeadlinesAdapter @Inject constructor() :
     RecyclerView.Adapter<HeadlinesAdapter.HeadlinesViewHolder>() {
 
     private var articlesList: MutableList<Article> = mutableListOf()
+    private var itemClickListener: ((Article) -> Unit)? = null
 
     class HeadlinesViewHolder(
         private val binding: HeadlineItemViewBinding
     ) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(article: Article) {
-            Glide
-                .with(binding.root.context)
-                .load(article.imageUrl)
-                .centerCrop()
-                .placeholder(R.drawable.headline_placeholder)
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
-                .into(binding.headlineImage)
+        fun bind(article: Article, itemClickListener: ((Article) -> Unit)?) {
+            binding.apply {
+                Glide
+                    .with(root.context)
+                    .load(article.imageUrl)
+                    .centerCrop()
+                    .placeholder(R.drawable.headline_placeholder)
+                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+                    .into(headlineImage)
 
-            binding.headlineTitle.text = article.title
+                headlineTitle.text = article.title
+
+                root.setOnClickListener {
+                    itemClickListener?.invoke(article)
+                }
+            }
         }
     }
 
@@ -38,7 +45,7 @@ class HeadlinesAdapter @Inject constructor() :
     }
 
     override fun onBindViewHolder(holder: HeadlinesViewHolder, position: Int) {
-        holder.bind(articlesList[position])
+        holder.bind(articlesList[position], itemClickListener)
     }
 
     override fun getItemCount() = articlesList.size
@@ -46,5 +53,9 @@ class HeadlinesAdapter @Inject constructor() :
     fun updateList(articlesList: List<Article>) {
         this.articlesList = articlesList.toMutableList()
         notifyItemRangeChanged(0, articlesList.lastIndex)
+    }
+
+    fun setOnItemClickListener(onItemClicked: (Article) -> Unit) {
+        this.itemClickListener = onItemClicked
     }
 }
