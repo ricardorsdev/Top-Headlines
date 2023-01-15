@@ -40,8 +40,6 @@ class HeadlinesFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.rvHeadlines.adapter = headlinesAdapter
-
-
         setObserver()
     }
 
@@ -59,8 +57,7 @@ class HeadlinesFragment : Fragment() {
                             }
                         }
                         is NetworkResult.Failure -> {
-                            binding.progressIndicator.visibility = View.GONE
-                            Toast.makeText(requireContext(), result.message, Toast.LENGTH_LONG).show()
+                            showError()
                         }
                     }
                 }
@@ -69,16 +66,30 @@ class HeadlinesFragment : Fragment() {
     }
 
     private fun showLoading() {
-        binding.progressIndicator.visibility = View.VISIBLE
-        binding.rvHeadlines.visibility = View.GONE
+        binding.apply {
+            tvErrorState.visibility = View.GONE
+            rvHeadlines.visibility = View.GONE
+            cpiLoadingState.visibility = View.VISIBLE
+        }
     }
 
     private fun showList(articlesList: List<Article>) {
-        binding.progressIndicator.visibility = View.GONE
-        binding.rvHeadlines.visibility = View.VISIBLE
+        binding.apply {
+            cpiLoadingState.visibility = View.GONE
+            tvErrorState.visibility = View.GONE
+            rvHeadlines.visibility = View.VISIBLE
+        }
 
         headlinesAdapter.updateList(articlesList)
         headlinesAdapter.notifyItemRangeChanged(0, articlesList.lastIndex)
+    }
+
+    private fun showError() {
+        binding.apply {
+            rvHeadlines.visibility = View.GONE
+            cpiLoadingState.visibility = View.GONE
+            tvErrorState.visibility = View.VISIBLE
+        }
     }
 
     override fun onDestroyView() {
