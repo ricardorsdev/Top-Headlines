@@ -6,7 +6,7 @@ data class Headline(
     @SerializedName("status")
     val status: String = "",
     @SerializedName("totalResults")
-    val totalResults: Int? = 0,
+    val totalResults: Int = 0,
     @SerializedName("articles")
-    val articles: List<Article> = listOf()
+    val articles: List<Article>? = listOf()
 )

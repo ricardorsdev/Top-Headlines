@@ -1,6 +1,7 @@
 package com.example.topheadlines.di
 
 import com.example.topheadlines.data.remote.NewsService
+import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -39,7 +40,7 @@ object NetworkModule {
     @Singleton
     @Provides
     fun provideConverterFactory(): GsonConverterFactory =
-        GsonConverterFactory.create()
+        GsonConverterFactory.create(GsonBuilder().serializeNulls().create())
 
     @Singleton
     @Provides

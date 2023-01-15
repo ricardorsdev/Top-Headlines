@@ -12,11 +12,11 @@ import javax.inject.Inject
 
 class NewsRepositoryImpl @Inject constructor(private val dataSource: NewsService): NewsRepository {
 
-    override fun getHeadlines(): Flow<List<Article>> {
+    override fun getHeadlines(): Flow<List<Article>?> {
         return flow {
             emit(dataSource.getHeadlines(BuildConfig.SOURCE, BuildConfig.API_KEY))
         }.map {
-            it.articles.sortedByDescending { article ->
+            it.articles?.sortedByDescending { article ->
                 DateUtils.convertStringDateToTime(article.publishedAt)
             }
         }

@@ -7,7 +7,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.topheadlines.R
 
 object ImageUtils {
-    fun ImageView.setImageFromUrl(context: Context, imageUrl: String) {
+    fun ImageView.setImageFromUrl(context: Context, imageUrl: String?) {
         Glide
             .with(context)
             .load(imageUrl)
