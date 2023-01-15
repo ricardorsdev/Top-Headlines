@@ -7,13 +7,16 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
+import com.example.topheadlines.data.model.Article
 import com.example.topheadlines.databinding.FragmentArticleBinding
+import com.example.topheadlines.utils.ImageUtils.setImageFromUrl
 
 class ArticleFragment: Fragment() {
 
     private var _binding: FragmentArticleBinding? = null
     private val binding get() = _binding!!
     private val args: ArticleFragmentArgs by navArgs()
+    lateinit var article: Article
 
 
     override fun onCreateView(
@@ -27,8 +30,17 @@ class ArticleFragment: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        article = args.article
+        setupView()
+    }
 
-        Log.e("Test", "${args.article}")
+    private fun setupView() {
+        binding.apply {
+            ivArticle.setImageFromUrl(binding.root.context, article.imageUrl)
+            tvTitle.text = article.title
+            tvDescription.text = article.description
+            tvContent.text = article.content
+        }
     }
 
     override fun onDestroy() {

@@ -14,7 +14,7 @@
         <ImageView
             android:id="@+id/headline_image"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/image_height"
+            android:layout_height="@dimen/card_image_height"
             android:scaleType="centerCrop"
             tools:ignore="ContentDescription"
             tools:srcCompat="@drawable/headline_placeholder" />

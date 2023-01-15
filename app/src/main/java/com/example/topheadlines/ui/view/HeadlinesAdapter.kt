@@ -8,6 +8,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.topheadlines.R
 import com.example.topheadlines.data.model.Article
 import com.example.topheadlines.databinding.HeadlineItemViewBinding
+import com.example.topheadlines.utils.ImageUtils.setImageFromUrl
 import javax.inject.Inject
 
 class HeadlinesAdapter @Inject constructor() :
@@ -21,16 +22,8 @@ class HeadlinesAdapter @Inject constructor() :
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(article: Article, itemClickListener: ((Article) -> Unit)?) {
             binding.apply {
-                Glide
-                    .with(root.context)
-                    .load(article.imageUrl)
-                    .centerCrop()
-                    .placeholder(R.drawable.headline_placeholder)
-                    .diskCacheStrategy(DiskCacheStrategy.ALL)
-                    .into(headlineImage)
-
+                headlineImage.setImageFromUrl(binding.root.context, article.imageUrl)
                 headlineTitle.text = article.title
-
                 root.setOnClickListener {
                     itemClickListener?.invoke(article)
                 }
