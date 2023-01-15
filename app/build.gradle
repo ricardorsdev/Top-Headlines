@@ -18,6 +18,10 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField "String", "NEWS_PROVIDER", "\"BBC News\""
+        buildConfigField "String", "SOURCE", "\"bbc-news\""
+        buildConfigField "String", "API_KEY", "\"8972067dab374dbf86896893e0c2729a\""
     }
 
     buildTypes {
