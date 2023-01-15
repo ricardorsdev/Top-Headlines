@@ -4,15 +4,18 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.StringRes
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
+import com.example.topheadlines.R
 import com.example.topheadlines.data.model.Article
 import com.example.topheadlines.databinding.FragmentHeadlinesBinding
 import com.example.topheadlines.ui.viewmodel.NewsViewModel
+import com.example.topheadlines.utils.BiometricsUtils
 import com.example.topheadlines.utils.NetworkResult
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -23,14 +26,13 @@ class HeadlinesFragment : Fragment() {
 
     private var _binding: FragmentHeadlinesBinding? = null
     private val binding get() = _binding!!
-    private val sharedViewModel: NewsViewModel by activityViewModels()
+    private val viewModel: NewsViewModel by viewModels()
+
     @Inject
     lateinit var headlinesAdapter: HeadlinesAdapter
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         _binding = FragmentHeadlinesBinding.inflate(inflater, container, false)
         return binding.root
@@ -41,6 +43,7 @@ class HeadlinesFragment : Fragment() {
 
         setupAdapter()
         setObserver()
+        checkBiometrics()
     }
 
     private fun setupAdapter() {
@@ -53,7 +56,7 @@ class HeadlinesFragment : Fragment() {
     private fun setObserver() {
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
-                sharedViewModel.articleList.collect { result ->
+                viewModel.articleList.collect { result ->
                     when (result) {
                         is NetworkResult.Loading -> {
                             showLoading()
@@ -64,7 +67,7 @@ class HeadlinesFragment : Fragment() {
                             }
                         }
                         is NetworkResult.Failure -> {
-                            showError()
+                            showError(R.string.generic_error_message)
                         }
                     }
                 }
@@ -91,17 +94,30 @@ class HeadlinesFragment : Fragment() {
         headlinesAdapter.notifyItemRangeChanged(0, articlesList.lastIndex)
     }
 
-    private fun showError() {
+    private fun showError(@StringRes errorMessage: Int) {
         binding.apply {
             rvHeadlines.visibility = View.GONE
             cpiLoadingState.visibility = View.GONE
             tvErrorState.visibility = View.VISIBLE
+            tvErrorState.text = getString(errorMessage)
         }
     }
 
     private fun goToArticle(article: Article) {
         val action = HeadlinesFragmentDirections.actionHeadlinesFragmentToArticleFragment(article)
         findNavController().navigate(action)
+    }
+
+    private fun checkBiometrics() {
+        if (BiometricsUtils.isBiometricAvailable(requireContext())) {
+            BiometricsUtils.showBiometricPrompt(fragment = this, onSuccess = {
+                viewModel.fetchHeadlines()
+            }, onError = {
+                showError(R.string.biometrics_error_message)
+            })
+        } else {
+            viewModel.fetchHeadlines()
+        }
     }
 
     override fun onDestroyView() {

@@ -3,9 +3,6 @@ package com.example.topheadlines.ui.view
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.engine.DiskCacheStrategy
-import com.example.topheadlines.R
 import com.example.topheadlines.data.model.Article
 import com.example.topheadlines.databinding.HeadlineItemViewBinding
 import com.example.topheadlines.utils.ImageUtils.setImageFromUrl

@@ -12,6 +12,7 @@ import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+
 @HiltViewModel
 class NewsViewModel @Inject constructor(
     private val newsRepository: NewsRepository
@@ -21,22 +22,16 @@ class NewsViewModel @Inject constructor(
         MutableStateFlow<NetworkResult<List<Article>>>(NetworkResult.Loading())
     val articleList: StateFlow<NetworkResult<List<Article>>> = _articleList
 
-    init {
-        fetchHeadlines()
-    }
-
-    private fun fetchHeadlines() {
+    fun fetchHeadlines() {
         viewModelScope.launch {
             _articleList.value = NetworkResult.Loading()
 
-            newsRepository.getHeadlines()
-                .catch {
-                    it.printStackTrace()
-                    _articleList.value = NetworkResult.Failure(it.message)
-                }
-                .collect { articles ->
-                    _articleList.value = NetworkResult.Success(articles)
-                }
+            newsRepository.getHeadlines().catch {
+                it.printStackTrace()
+                _articleList.value = NetworkResult.Failure(it.message)
+            }.collect { articles ->
+                _articleList.value = NetworkResult.Success(articles)
+            }
         }
     }
 }

@@ -1,7 +1,8 @@
 package com.example.topheadlines.ui.view
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,7 +12,8 @@ import com.example.topheadlines.data.model.Article
 import com.example.topheadlines.databinding.FragmentArticleBinding
 import com.example.topheadlines.utils.ImageUtils.setImageFromUrl
 
-class ArticleFragment: Fragment() {
+
+class ArticleFragment : Fragment() {
 
     private var _binding: FragmentArticleBinding? = null
     private val binding get() = _binding!!
@@ -20,9 +22,7 @@ class ArticleFragment: Fragment() {
 
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         _binding = FragmentArticleBinding.inflate(inflater, container, false)
         return binding.root
@@ -40,6 +40,15 @@ class ArticleFragment: Fragment() {
             tvTitle.text = article.title
             tvDescription.text = article.description
             tvContent.text = article.content
+
+            if (!article.url.isNullOrEmpty()) {
+                btnGoToBrowser.visibility = View.VISIBLE
+                btnGoToBrowser.setOnClickListener {
+                    val intent = Intent(Intent.ACTION_VIEW)
+                    intent.data = Uri.parse(article.url)
+                    startActivity(intent)
+                }
+            }
         }
     }
 

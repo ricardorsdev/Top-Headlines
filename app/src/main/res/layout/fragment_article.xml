@@ -53,6 +53,13 @@
                 android:layout_marginTop="@dimen/default_margin"
                 tools:text="@string/text_sample" />
 
+            <Button
+                android:id="@+id/btn_go_to_browser"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/default_margin"
+                android:text="@string/open_browser"/>
+
         </androidx.appcompat.widget.LinearLayoutCompat>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

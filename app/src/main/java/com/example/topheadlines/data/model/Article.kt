@@ -15,5 +15,7 @@ data class Article(
     @SerializedName("content")
     val content: String? = "",
     @SerializedName("publishedAt")
-    val publishedAt: String? = ""
+    val publishedAt: String? = "",
+    @SerializedName("url")
+    val url: String? = ""
 ) : Parcelable
