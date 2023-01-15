@@ -23,10 +23,15 @@ android {
 
     flavorDimensions += "source"
     productFlavors {
+        all {
+            manifestPlaceholders.flavorName = ""
+            manifestPlaceholders.appTheme = "@style/Theme.TopHeadlines"
+        }
         create("bbcnews") {
             dimension = "source"
             applicationIdSuffix = ".bbcnews"
-            manifestPlaceholders.appNameSuffix ="BBC News"
+            manifestPlaceholders.flavorName ="BBC News"
+            manifestPlaceholders.appTheme = "@style/Theme.TopHeadlines.BBCNews"
 
             buildConfigField "String", "NEWS_PROVIDER", "\"BBC News\""
             buildConfigField "String", "SOURCE", "\"bbc-news\""
@@ -36,7 +41,8 @@ android {
         create("buzzfeed") {
             dimension = "source"
             applicationIdSuffix = ".buzzfeed"
-            manifestPlaceholders.appNameSuffix ="BuzzFeed"
+            manifestPlaceholders.flavorName ="BuzzFeed"
+            manifestPlaceholders.appTheme = "@style/Theme.TopHeadlines.BuzzFeed"
 
             buildConfigField "String", "NEWS_PROVIDER", "\"BuzzFeed\""
             buildConfigField "String", "SOURCE", "\"buzzfeed\""
@@ -46,7 +52,8 @@ android {
         create("espn") {
             dimension = "source"
             applicationIdSuffix = ".espn"
-            manifestPlaceholders.appNameSuffix ="ESPN"
+            manifestPlaceholders.flavorName ="ESPN"
+            manifestPlaceholders.appTheme = "@style/Theme.TopHeadlines.ESPN"
 
             buildConfigField "String", "NEWS_PROVIDER", "\"ESPN\""
             buildConfigField "String", "SOURCE", "\"espn\""
@@ -56,9 +63,18 @@ android {
     }
 
     buildTypes {
+        all {
+            manifestPlaceholders.appName ="Top Headlines"
+        }
+        debug {
+            manifestPlaceholders.buildName ="Debug"
+            minifyEnabled false
+        }
         release {
+            manifestPlaceholders.buildName = "Release"
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.debug
         }
     }
     compileOptions {

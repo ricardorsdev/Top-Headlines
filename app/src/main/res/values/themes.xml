@@ -12,5 +12,39 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+        <item name="android:windowBackground">@color/gray_background</item>
+    </style>
+
+    <style name="Theme.TopHeadlines.BBCNews" parent="Theme.TopHeadlines">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/bbc_black</item>
+        <item name="colorPrimaryVariant">@color/bbc_black</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/bbc_red</item>
+        <item name="colorSecondaryVariant">@color/bbc_red</item>
+        <item name="colorOnSecondary">@color/black</item>
+    </style>
+
+    <style name="Theme.TopHeadlines.BuzzFeed" parent="Theme.TopHeadlines">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/buzzfeed_red</item>
+        <item name="colorPrimaryVariant">@color/buzzfeed_red</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/buzzfeed_yellow</item>
+        <item name="colorSecondaryVariant">@color/buzzfeed_yellow</item>
+        <item name="colorOnSecondary">@color/black</item>
+    </style>
+
+    <style name="Theme.TopHeadlines.ESPN" parent="Theme.TopHeadlines">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/espn_red</item>
+        <item name="colorPrimaryVariant">@color/espn_alternate_red</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/espn_gray</item>
+        <item name="colorSecondaryVariant">@color/espn_gray</item>
+        <item name="colorOnSecondary">@color/black</item>
     </style>
 </resources>

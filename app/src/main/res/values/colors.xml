@@ -7,4 +7,15 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="gray_background">#FFDDDDDD</color>
+
+    <color name="bbc_black">#FF000000</color>
+    <color name="bbc_red">#FFB70100</color>
+
+    <color name="buzzfeed_red">#FFEE3222</color>
+    <color name="buzzfeed_yellow">#FFFFEE00</color>
+
+    <color name="espn_red">#FFDD0000</color>
+    <color name="espn_alternate_red">#FFB40001</color>
+    <color name="espn_gray">#FF2B2C2D</color>
 </resources>
