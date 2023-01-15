@@ -26,6 +26,7 @@ android {
         create("bbcnews") {
             dimension = "source"
             applicationIdSuffix = ".bbcnews"
+            manifestPlaceholders.appNameSuffix ="BBC News"
 
             buildConfigField "String", "NEWS_PROVIDER", "\"BBC News\""
             buildConfigField "String", "SOURCE", "\"bbc-news\""
@@ -35,6 +36,7 @@ android {
         create("buzzfeed") {
             dimension = "source"
             applicationIdSuffix = ".buzzfeed"
+            manifestPlaceholders.appNameSuffix ="BuzzFeed"
 
             buildConfigField "String", "NEWS_PROVIDER", "\"BuzzFeed\""
             buildConfigField "String", "SOURCE", "\"buzzfeed\""
@@ -44,6 +46,7 @@ android {
         create("espn") {
             dimension = "source"
             applicationIdSuffix = ".espn"
+            manifestPlaceholders.appNameSuffix ="ESPN"
 
             buildConfigField "String", "NEWS_PROVIDER", "\"ESPN\""
             buildConfigField "String", "SOURCE", "\"espn\""
