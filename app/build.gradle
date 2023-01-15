@@ -19,10 +19,34 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
 
-        buildConfigField "String", "NEWS_PROVIDER", "\"BBC News\""
-        buildConfigField "String", "SOURCE", "\"bbc-news\""
-        buildConfigField "String", "API_KEY", "\"8972067dab374dbf86896893e0c2729a\""
+    flavorDimensions += "source"
+    productFlavors {
+        create("bbcnews") {
+            dimension = "source"
+            applicationIdSuffix = ".bbcnews"
+
+            buildConfigField "String", "NEWS_PROVIDER", "\"BBC News\""
+            buildConfigField "String", "SOURCE", "\"bbc-news\""
+            buildConfigField "String", "API_KEY", "\"8972067dab374dbf86896893e0c2729a\""
+        }
+        create("buzzfeed") {
+            dimension = "source"
+            applicationIdSuffix = ".buzzfeed"
+
+            buildConfigField "String", "NEWS_PROVIDER", "\"BuzzFeed\""
+            buildConfigField "String", "SOURCE", "\"buzzfeed\""
+            buildConfigField "String", "API_KEY", "\"8972067dab374dbf86896893e0c2729a\""
+        }
+        create("espn") {
+            dimension = "source"
+            applicationIdSuffix = ".espn"
+
+            buildConfigField "String", "NEWS_PROVIDER", "\"ESPN\""
+            buildConfigField "String", "SOURCE", "\"espn\""
+            buildConfigField "String", "API_KEY", "\"8972067dab374dbf86896893e0c2729a\""
+        }
     }
 
     buildTypes {
