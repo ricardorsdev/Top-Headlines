@@ -30,6 +30,7 @@ android {
             buildConfigField "String", "NEWS_PROVIDER", "\"BBC News\""
             buildConfigField "String", "SOURCE", "\"bbc-news\""
             buildConfigField "String", "API_KEY", "\"8972067dab374dbf86896893e0c2729a\""
+            buildConfigField "String", "DATE_PATTERN", "\"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'\""
         }
         create("buzzfeed") {
             dimension = "source"
@@ -38,6 +39,7 @@ android {
             buildConfigField "String", "NEWS_PROVIDER", "\"BuzzFeed\""
             buildConfigField "String", "SOURCE", "\"buzzfeed\""
             buildConfigField "String", "API_KEY", "\"8972067dab374dbf86896893e0c2729a\""
+            buildConfigField "String", "DATE_PATTERN", "\"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'\""
         }
         create("espn") {
             dimension = "source"
@@ -46,6 +48,7 @@ android {
             buildConfigField "String", "NEWS_PROVIDER", "\"ESPN\""
             buildConfigField "String", "SOURCE", "\"espn\""
             buildConfigField "String", "API_KEY", "\"8972067dab374dbf86896893e0c2729a\""
+            buildConfigField "String", "DATE_PATTERN", "\"yyyy-MM-dd'T'HH:mm:ss'Z'\""
         }
     }
 
