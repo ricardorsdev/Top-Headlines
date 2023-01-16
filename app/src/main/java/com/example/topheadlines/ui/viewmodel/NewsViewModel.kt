@@ -19,12 +19,12 @@ class NewsViewModel @Inject constructor(
 ) : ViewModel() {
 
     private var _articleList =
-        MutableStateFlow<NetworkResult<List<Article>>>(NetworkResult.Loading())
+        MutableStateFlow<NetworkResult<List<Article>>>(NetworkResult.Loading)
     val articleList: StateFlow<NetworkResult<List<Article>>> = _articleList
 
     fun fetchHeadlines() {
         viewModelScope.launch {
-            _articleList.value = NetworkResult.Loading()
+            _articleList.value = NetworkResult.Loading
 
             newsRepository.getHeadlines().catch {
                 it.printStackTrace()
