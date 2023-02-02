@@ -1,4 +1,4 @@
-package com.example.topheadlines.utils
+package com.ricardosousa.topheadlines.utils
 
 sealed class NetworkResult<out T> {
     object Loading: NetworkResult<Nothing>()

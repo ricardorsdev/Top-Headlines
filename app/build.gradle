@@ -8,11 +8,11 @@ plugins {
 }
 
 android {
-    namespace 'com.example.topheadlines'
+    namespace 'com.ricardosousa.topheadlines'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.example.topheadlines"
+        applicationId "com.ricardosousa.topheadlines"
         minSdk 21
         targetSdk 33
         versionCode 1

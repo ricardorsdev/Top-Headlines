@@ -1,4 +1,4 @@
-package com.example.topheadlines.ui.view
+package com.ricardosousa.topheadlines.ui.view
 
 import android.content.Intent
 import android.net.Uri
@@ -8,9 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
-import com.example.topheadlines.data.model.Article
-import com.example.topheadlines.databinding.FragmentArticleBinding
-import com.example.topheadlines.utils.ImageUtils.setImageFromUrl
+import com.ricardosousa.topheadlines.data.model.Article
+import com.ricardosousa.topheadlines.databinding.FragmentArticleBinding
+import com.ricardosousa.topheadlines.utils.ImageUtils.setImageFromUrl
 
 
 class ArticleFragment : Fragment() {

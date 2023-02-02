@@ -1,6 +1,6 @@
-package com.example.topheadlines.utils
+package com.ricardosousa.topheadlines.utils
 
-import com.example.topheadlines.BuildConfig
+import com.ricardosousa.topheadlines.BuildConfig
 import java.text.SimpleDateFormat
 import java.util.*
 

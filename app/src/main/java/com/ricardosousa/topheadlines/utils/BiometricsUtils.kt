@@ -1,11 +1,11 @@
-package com.example.topheadlines.utils
+package com.ricardosousa.topheadlines.utils
 
 import android.content.Context
 import androidx.biometric.BiometricManager
 import androidx.biometric.BiometricPrompt
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import com.example.topheadlines.R
+import com.ricardosousa.topheadlines.R
 
 object BiometricsUtils {
     fun isBiometricAvailable(context: Context): Boolean {

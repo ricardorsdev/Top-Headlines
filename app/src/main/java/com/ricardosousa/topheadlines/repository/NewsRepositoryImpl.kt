@@ -1,9 +1,9 @@
-package com.example.topheadlines.repository
+package com.ricardosousa.topheadlines.repository
 
-import com.example.topheadlines.BuildConfig
-import com.example.topheadlines.data.model.Article
-import com.example.topheadlines.data.remote.NewsService
-import com.example.topheadlines.utils.DateUtils
+import com.ricardosousa.topheadlines.BuildConfig
+import com.ricardosousa.topheadlines.data.model.Article
+import com.ricardosousa.topheadlines.data.remote.NewsService
+import com.ricardosousa.topheadlines.utils.DateUtils
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow

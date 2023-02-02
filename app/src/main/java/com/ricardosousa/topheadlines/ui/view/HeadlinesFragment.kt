@@ -1,4 +1,4 @@
-package com.example.topheadlines.ui.view
+package com.ricardosousa.topheadlines.ui.view
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,12 +11,12 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
-import com.example.topheadlines.R
-import com.example.topheadlines.data.model.Article
-import com.example.topheadlines.databinding.FragmentHeadlinesBinding
-import com.example.topheadlines.ui.viewmodel.NewsViewModel
-import com.example.topheadlines.utils.BiometricsUtils
-import com.example.topheadlines.utils.NetworkResult
+import com.ricardosousa.topheadlines.R
+import com.ricardosousa.topheadlines.data.model.Article
+import com.ricardosousa.topheadlines.databinding.FragmentHeadlinesBinding
+import com.ricardosousa.topheadlines.ui.viewmodel.NewsViewModel
+import com.ricardosousa.topheadlines.utils.BiometricsUtils
+import com.ricardosousa.topheadlines.utils.NetworkResult
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import javax.inject.Inject

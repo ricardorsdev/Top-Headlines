@@ -1,4 +1,4 @@
-package com.example.topheadlines.utils
+package com.ricardosousa.topheadlines.utils
 
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi

@@ -1,6 +1,6 @@
-package com.example.topheadlines.data.remote
+package com.ricardosousa.topheadlines.data.remote
 
-import com.example.topheadlines.data.model.Headline
+import com.ricardosousa.topheadlines.data.model.Headline
 import retrofit2.http.GET
 import retrofit2.http.Query
 

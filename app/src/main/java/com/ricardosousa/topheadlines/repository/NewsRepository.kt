@@ -1,6 +1,6 @@
-package com.example.topheadlines.repository
+package com.ricardosousa.topheadlines.repository
 
-import com.example.topheadlines.data.model.Article
+import com.ricardosousa.topheadlines.data.model.Article
 import kotlinx.coroutines.flow.Flow
 
 interface NewsRepository {

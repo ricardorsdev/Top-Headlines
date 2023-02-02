@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/headlinesFragment"
-        android:name="com.example.topheadlines.ui.view.HeadlinesFragment"
+        android:name="com.ricardosousa.topheadlines.ui.view.HeadlinesFragment"
         tools:layout="@layout/fragment_headlines">
         <action
             android:id="@+id/action_headlinesFragment_to_articleFragment"
@@ -20,11 +20,11 @@
 
     <fragment
         android:id="@+id/articleFragment"
-        android:name="com.example.topheadlines.ui.view.ArticleFragment"
+        android:name="com.ricardosousa.topheadlines.ui.view.ArticleFragment"
         tools:layout="@layout/fragment_article">
         <argument
             android:name="article"
-            app:argType="com.example.topheadlines.data.model.Article"/>
+            app:argType="com.ricardosousa.topheadlines.data.model.Article"/>
     </fragment>
 
 </navigation>

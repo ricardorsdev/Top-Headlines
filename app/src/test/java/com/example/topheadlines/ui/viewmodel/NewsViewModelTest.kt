@@ -1,9 +1,9 @@
-package com.example.topheadlines.ui.viewmodel
+package com.ricardosousa.topheadlines.ui.viewmodel
 
-import com.example.topheadlines.data.model.Article
-import com.example.topheadlines.repository.NewsRepository
-import com.example.topheadlines.utils.MainCoroutineRule
-import com.example.topheadlines.utils.NetworkResult
+import com.ricardosousa.topheadlines.data.model.Article
+import com.ricardosousa.topheadlines.repository.NewsRepository
+import com.ricardosousa.topheadlines.utils.MainCoroutineRule
+import com.ricardosousa.topheadlines.utils.NetworkResult
 import junit.framework.Assert.assertEquals
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.flow

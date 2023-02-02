@@ -1,6 +1,6 @@
-package com.example.topheadlines.di
+package com.ricardosousa.topheadlines.di
 
-import com.example.topheadlines.data.remote.NewsService
+import com.ricardosousa.topheadlines.data.remote.NewsService
 import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides

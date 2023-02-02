@@ -1,11 +1,11 @@
-package com.example.topheadlines.ui.view
+package com.ricardosousa.topheadlines.ui.view
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.topheadlines.data.model.Article
-import com.example.topheadlines.databinding.HeadlineItemViewBinding
-import com.example.topheadlines.utils.ImageUtils.setImageFromUrl
+import com.ricardosousa.topheadlines.data.model.Article
+import com.ricardosousa.topheadlines.databinding.HeadlineItemViewBinding
+import com.ricardosousa.topheadlines.utils.ImageUtils.setImageFromUrl
 import javax.inject.Inject
 
 class HeadlinesAdapter @Inject constructor() :

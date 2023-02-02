@@ -1,10 +1,10 @@
-package com.example.topheadlines.ui.viewmodel
+package com.ricardosousa.topheadlines.ui.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.topheadlines.data.model.Article
-import com.example.topheadlines.repository.NewsRepository
-import com.example.topheadlines.utils.NetworkResult
+import com.ricardosousa.topheadlines.data.model.Article
+import com.ricardosousa.topheadlines.repository.NewsRepository
+import com.ricardosousa.topheadlines.utils.NetworkResult
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

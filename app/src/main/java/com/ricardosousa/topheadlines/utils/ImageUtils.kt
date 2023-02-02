@@ -1,10 +1,10 @@
-package com.example.topheadlines.utils
+package com.ricardosousa.topheadlines.utils
 
 import android.content.Context
 import android.widget.ImageView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
-import com.example.topheadlines.R
+import com.ricardosousa.topheadlines.R
 
 object ImageUtils {
     fun ImageView.setImageFromUrl(context: Context, imageUrl: String?) {

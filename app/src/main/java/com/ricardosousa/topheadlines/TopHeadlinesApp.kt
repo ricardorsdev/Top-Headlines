@@ -1,4 +1,4 @@
-package com.example.topheadlines
+package com.ricardosousa.topheadlines
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp

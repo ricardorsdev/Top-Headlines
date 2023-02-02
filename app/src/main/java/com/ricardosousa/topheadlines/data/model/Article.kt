@@ -1,4 +1,4 @@
-package com.example.topheadlines.data.model
+package com.ricardosousa.topheadlines.data.model
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName

@@ -1,7 +1,7 @@
-package com.example.topheadlines.di
+package com.ricardosousa.topheadlines.di
 
-import com.example.topheadlines.repository.NewsRepository
-import com.example.topheadlines.repository.NewsRepositoryImpl
+import com.ricardosousa.topheadlines.repository.NewsRepository
+import com.ricardosousa.topheadlines.repository.NewsRepositoryImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

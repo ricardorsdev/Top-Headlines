@@ -1,12 +1,12 @@
-package com.example.topheadlines.ui.view
+package com.ricardosousa.topheadlines.ui.view
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupActionBarWithNavController
-import com.example.topheadlines.BuildConfig
-import com.example.topheadlines.R
+import com.ricardosousa.topheadlines.BuildConfig
+import com.ricardosousa.topheadlines.R
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

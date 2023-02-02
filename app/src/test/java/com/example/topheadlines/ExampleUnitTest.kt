@@ -1,4 +1,4 @@
-package com.example.topheadlines
+package com.ricardosousa.topheadlines
 
 import org.junit.Test
 
